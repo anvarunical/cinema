@@ -1,0 +1,18 @@
+{
+  "name": "cinema",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-admin": "node ./src/admin/app.js",
+    "start-client": "node ./src/client/app.js",
+    "dev-admin": "nodemon ./src/admin/app.js",
+    "dev-client": "nodemon ./src/client/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

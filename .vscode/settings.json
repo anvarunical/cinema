@@ -1,0 +1,17 @@
+{
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "editor.foldingImportsByDefault": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.format.insertSpaceAfterCommaDelimiter": false,
+    "javascript.format.insertSpaceAfterCommaDelimiter": false,
+    "editor.formatOnSave": true,
+    "eslint.codeActionsOnSave.rules": [],
+    "files.associations": {
+        "*.json": "json"
+    },
+    "editor.inlineSuggest.enabled": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "files.autoSave": "afterDelay",
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false
+}
