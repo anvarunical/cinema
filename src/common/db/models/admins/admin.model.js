@@ -2,6 +2,9 @@ import mongoose from "mongoose";
 import {COLLECTIONS} from "../../../constants/collections.js";
 
 export const Admin = new mongoose.Schema({
+    isBoss: {
+        type: mongoose.SchemaTypes.Boolean
+    },
     firstName: {
         type: mongoose.SchemaTypes.String
     },
