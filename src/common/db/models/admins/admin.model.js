@@ -12,7 +12,8 @@ export const Admin = new mongoose.Schema({
         type: mongoose.SchemaTypes.String
     },
     phoneNumber: {
-        type: mongoose.SchemaTypes.String
+        type: mongoose.SchemaTypes.String,
+        unique: true
     },
     password: {
         type: mongoose.SchemaTypes.String
@@ -21,13 +22,12 @@ export const Admin = new mongoose.Schema({
         type: mongoose.ObjectId,
         ref: COLLECTIONS.ROLES
     },
-    createAt: {
+    createdAt: {
         type: mongoose.SchemaTypes.Mixed,
         default: 0
     },
     updatedAt: {
         type: mongoose.SchemaTypes.Mixed,
-        default: 0
     },
     deletedAt: {
         type: mongoose.SchemaTypes.Mixed,

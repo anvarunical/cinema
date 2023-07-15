@@ -6,5 +6,6 @@ export const COLLECTIONS = {
     SEANS: "SEANS",
     SETTINGS: "SETTINGS",
     ADMINS: "ADMINS",
-    ROLES: "ROLES"
+    ROLES: "ROLES",
+    OTPS: "OTPS"
 }
