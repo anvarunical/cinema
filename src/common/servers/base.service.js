@@ -13,11 +13,11 @@ export const BaseService = class BaseService {
         return document?._id
     }
 
-    async updateOne(id, data){
+    async updateOne(id, data, options = {}){
         try {
             id = new Types.ObjectId(id)
             data.updatedAt = new Date()
-            return await this.model.updateOne({_id: id},{$set: data})
+            return await this.model.updateOne({_id: id},{$set: data}, options)
         } catch (error) {
             console.log(error.message);
         }

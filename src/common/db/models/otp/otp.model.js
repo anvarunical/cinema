@@ -1,4 +1,5 @@
-import {COLLECTIONS} from "../../../constants/collections"
+import mongoose from "mongoose"
+import {COLLECTIONS} from "../../../constants/collections.js"
 
 export const Otp = new mongoose.Schema({
     adminId: {
