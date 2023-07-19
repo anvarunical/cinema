@@ -10,7 +10,7 @@ export async function authorization(request,response, next){
         const payload = jwt.verify(token, ENV.TOKEN_SECRET_KEY)
         switch (payload?.type) {
             case "admin": {
-                request.admin = adminService.findById(new Types.ObjectId(payload._id))
+                request.admin = await adminService.findById(new Types.ObjectId(payload._id))
                 break
             }
             default:

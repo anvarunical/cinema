@@ -5,6 +5,7 @@ import {ENV} from "../../../common/config.js";
 import {otpGenerator} from "../../../common/utils/otp-generator.util.js";
 import otpService from "../../../common/servers/otp/otp.server.js"
 import {sendOtpApi} from "../../../common/utils/otp-sender.util.js";
+import {sendError} from "../../../common/utils/error-sender.utils.js";
 
 export async function loginHandler(request,response){
     try {
@@ -52,7 +53,7 @@ export async function resetPasswordOtpHandler(request, response){
 }
 
 export async function resetPasswordOtpVerifyHandler(request, response){
-// verify otp
+    // verify otp
     try{
         const  {phoneNumber, otp} = request.body
         if(!phoneNumber) throw new Error("phoneNumber must be provided!")
@@ -78,16 +79,10 @@ export async function resetPasswordOtpVerifyHandler(request, response){
 export async function resetPasswordHandler(request,response){
     const {password} = request.body
     const admin = request.admin
-    console.log(222, admin);
-    await adminService.updateOne(admin._id, {password})
+    await adminService.updateOne(admin._id, {password: md5(password)})
     return response.json({
         status: 200,
         message: "OK"
     })
 }
 
-function sendError(response, error){
-    return response.json({
-        error: error.message
-    })
-}
