@@ -5,7 +5,6 @@ import {sendError} from "../../../common/utils/error-sender.utils.js";
 export async function createGenreHandler(request, response){
     try {
         const data = request.body
-        data.password = md5(data.password)
         const result = await genreService.create(data)
         return response.json({
             message: "OK",

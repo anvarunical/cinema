@@ -1,5 +1,4 @@
 import {GenreModel} from "../../db/models/genres/genre.model.js";
-import {GenreModel} from "../../db/models/genres/genre.model.js";
 import {BaseService} from "../base.service.js";
 
 class GenreService extends BaseService {
