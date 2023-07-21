@@ -16,3 +16,5 @@ export const ENV = {
     OTP_CHANNEL: env.OTP_CHANNEL || -1001859198912,
     OTP_SEND_URL: env.OTP_SEND_URL || 'https://api.telegram.org/bot6359454176:AAH5vOG31gZTOplQWqbK9GnwnMiA9pOjSy0/sendMessage?chat_id=-1001859198912&parse_mode=html&text={{otp}} -> {{phoneNumber}}'
 }
+
+// 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
