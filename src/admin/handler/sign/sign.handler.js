@@ -1,9 +1,9 @@
 import md5 from "md5";
-import adminService from "../../../common/servers/admin/admin.service.js";
+import adminService from "../../../common/service/admin/admin.service.js";
 import jwt from 'jsonwebtoken'
 import {ENV} from "../../../common/config.js";
 import {otpGenerator} from "../../../common/utils/otp-generator.util.js";
-import otpService from "../../../common/servers/otp/otp.server.js"
+import otpService from "../../../common/service/otp/otp.server.js"
 import {sendOtpApi} from "../../../common/utils/otp-sender.util.js";
 import {sendError} from "../../../common/utils/error-sender.utils.js";
 

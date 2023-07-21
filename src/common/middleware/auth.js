@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
 import {ENV} from "../config.js"
-import adminService from "../servers/admin/admin.service.js"
+import adminService from "../service/admin/admin.service.js"
 import {Types} from "mongoose"
 
 export async function authorization(request,response, next){

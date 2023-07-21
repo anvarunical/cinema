@@ -1,5 +1,5 @@
 import md5 from "md5";
-import adminService from "../../../common/servers/admin/admin.service.js";
+import adminService from "../../../common/service/admin/admin.service.js";
 import {sendError} from "../../../common/utils/error-sender.utils.js";
 
 export async function createAdminHandler(request, response){
