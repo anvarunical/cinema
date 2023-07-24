@@ -17,7 +17,14 @@ async function start(){
     app.use("/genre", genreRoutes)
 
     app.get('/', (request, response) => response.send("<h1>admin api!</h1>"))
-    console.log(`admin server is running on http://${ENV.HOST}:${ENV.ADMIN_PORT}`)
+
+    // app.use((error, req, res, next) => {
+    //     if(error instanceof CommonExeption){
+    //         return res.status(error.status).send(error)
+    //     }
+    //     return res.status(500).send(new errors.ServerError(""))
+    // })
+    // console.log(`admin server is running on http://${ENV.HOST}:${ENV.ADMIN_PORT}`)
 }
 
 app.listen(ENV.ADMIN_PORT, start)
