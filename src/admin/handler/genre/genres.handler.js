@@ -6,6 +6,7 @@ export async function createGenreHandler(request, response){
     try {
         const data = request.body
         const result = await genreService.create(data)
+        console.log(result);
         return response.json({
             message: "OK",
             data: result

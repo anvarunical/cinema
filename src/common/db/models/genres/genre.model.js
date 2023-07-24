@@ -5,7 +5,7 @@ export const Genre = new mongoose.Schema({
     name: {
         type: mongoose.SchemaTypes.String
     },
-    createAt: {
+    createdAt: {
         type: mongoose.SchemaTypes.Mixed,
         default: 0
     },
@@ -19,4 +19,4 @@ export const Genre = new mongoose.Schema({
     }
 })
 
-export const GenreModel = mongoose.model(COLLECTIONS.GENRES, Genre)
+export const GenreModel = mongoose.model(COLLECTIONS.GENRES,Genre)

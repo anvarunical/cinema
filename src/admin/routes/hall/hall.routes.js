@@ -9,7 +9,7 @@ const routes = express.Router()
 
 routes.route('/')
     .post(authorization, validateIt(hallSchemas.createHall, 'body'),createHallHandler)
-    .put(authorization, validateIt(hallSchemas.updateHAll, 'body'), updateHallHandler)
+    .put(authorization, validateIt(hallSchemas.updateHall, 'body'), updateHallHandler)
     .get(authorization, getHallsHandler)
 
 routes.delete('/:_id',authorization, validateIt(baseSchemas.byId, 'params'), deleteHallHandler)

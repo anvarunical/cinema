@@ -3,93 +3,62 @@ import Joi from "joi";
 export const roleSchema = {
     createRole: Joi.object({
         name: Joi.string()
-                 .trim()
-                 .min(3)
-                 .max(30)
-                 .required(),
+            .trim()
+            .min(3)
+            .max(30)
+            .required(),
 
-        //admin
-        addAdmin: Joi.boolean()
-                     .required(),
+        addAdmin: Joi.boolean(),
+        updateAdmin: Joi.boolean(),
+        deleteAdmin: Joi.boolean(),
+        addGenre: Joi.boolean(),
+        updateGenre: Joi.boolean(),
+        deleteGenre: Joi.boolean(),
+        addHall: Joi.boolean(),
+        updateHall: Joi.boolean(),
+        deleteHall: Joi.boolean(),
+        addMovie: Joi.boolean(),
+        updateMovie: Joi.boolean(),
+        deleteMovie: Joi.boolean(),
+        addRole: Joi.boolean(),
+        updateRole: Joi.boolean(),
+        deleteRole: Joi.boolean(),
+        addSeans: Joi.boolean(),
+        updateSeans: Joi.boolean(),
+        deleteSeans: Joi.boolean(),
+        addSeat: Joi.boolean(),
+        updateSeat: Joi.boolean(),
+        deleteSeat: Joi.boolean(),
+        addSettings: Joi.boolean(),
+        updateSettings: Joi.boolean(),
+        deleteSettings: Joi.boolean(),
+    }) ,
+    updateRole : Joi.object({
+        id : Joi.string().hex().length(24).required(),
+        addAdmin: Joi.boolean(),
+        updateAdmin: Joi.boolean(),
+        deleteAdmin: Joi.boolean(),
+        addGenre: Joi.boolean(),
+        updateGenre: Joi.boolean(),
+        deleteGenre: Joi.boolean(),
+        addHall: Joi.boolean(),
+        updateHall: Joi.boolean(),
+        deleteHall: Joi.boolean(),
+        addMovie: Joi.boolean(),
+        updateMovie: Joi.boolean(),
+        deleteMovie: Joi.boolean(),
+        addRole: Joi.boolean(),
+        updateRole: Joi.boolean(),
+        deleteRole: Joi.boolean(),
+        addSeans: Joi.boolean(),
+        updateSeans: Joi.boolean(),
+        deleteSeans: Joi.boolean(),
+        addSeat: Joi.boolean(),
+        updateSeat: Joi.boolean(),
+        deleteSeat: Joi.boolean(),
+        addSettings: Joi.boolean(),
+        updateSettings: Joi.boolean(),
+        deleteSettings: Joi.boolean(),
+    }) 
 
-        updateAdmin: Joi.boolean()
-                        .required(),
-
-        deleteAdmin: Joi.boolean()
-                        .required(),
-             
-        //genres
-        addGenres: Joi.boolean()
-                     .required(),
-
-        updateGenres: Joi.boolean()
-                        .required(),
-
-        deleteGenres: Joi.boolean()
-                        .required(),
-        //halls
-        addHalls: Joi.boolean()
-                     .required(),
-
-        updateHalls: Joi.boolean()
-                        .required(),
-
-        deleteHalls: Joi.boolean()
-                        .required(),
-        //movie
-        addMovies: Joi.boolean()
-                      .required(),
-
-        updateMovies: Joi.boolean()
-                         .required(),
-
-        deleteMovies: Joi.boolean()
-                         .required(),
-        //otp
-        addOtp: Joi.boolean()
-                   .required(),
-
-        updateOtp: Joi.boolean()
-                      .required(),
-
-        deleteOtp: Joi.boolean()
-                      .required(),
-        //roles
-        addRoles: Joi.boolean()
-                     .required(),
-
-        updateRoles: Joi.boolean()
-                        .required(),
-
-        deleteRoles: Joi.boolean()
-                        .required(),
-        //seans
-        addSeans: Joi.boolean()
-                     .required(),
-
-        updateSeans: Joi.boolean()
-                        .required(),
-
-        deleteSeans: Joi.boolean()
-                        .required(),
-        //seats
-        addSeats: Joi.boolean()
-                     .required(),
-
-        updateSeats: Joi.boolean()
-                        .required(),
-
-        deleteSeats: Joi.boolean()
-                        .required(),
-        //settings
-        addSettings: Joi.boolean()
-                     .required(),
-
-        updateSettings: Joi.boolean()
-                        .required(),
-
-        deleteSettings: Joi.boolean()
-                        .required(),
-
-                    })
 }
