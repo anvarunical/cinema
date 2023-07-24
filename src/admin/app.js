@@ -5,6 +5,8 @@ import {connectDb} from "../common/db/connect.js";
 import adminRoutes from "./routes/admin/admin.routes.js"
 import signRoutes from "./routes/sign/sign.routes.js"
 import genreRoutes from "./routes/genre/genre.routes.js"
+import roleRoutes from "./routes/role/role.routes.js"
+import hallRoutes from "./routes/hall/hall.routes.js"
 
 const app = express()
 
@@ -15,6 +17,8 @@ async function start(){
     app.use("/admin",adminRoutes)
     app.use("/sign", signRoutes)
     app.use("/genre", genreRoutes)
+    app.use('/role' , roleRoutes)
+    app.use('/hall' , hallRoutes)
 
     app.get('/', (request, response) => response.send("<h1>admin api!</h1>"))
 

@@ -3,7 +3,8 @@ import {COLLECTIONS} from "../../../constants/collections.js";
 
 export const Hall = new mongoose.Schema({
     number: {
-        type: mongoose.SchemaTypes.Number
+        type: mongoose.SchemaTypes.Number,
+        unique:true
     },
     raws: {
         type: mongoose.SchemaTypes.Number
@@ -14,7 +15,7 @@ export const Hall = new mongoose.Schema({
     isVip: {
         type: mongoose.SchemaTypes.Boolean
     },
-    createAt: {
+    createdAt: {
         type: mongoose.SchemaTypes.Mixed,
         default: 0
     },
@@ -28,4 +29,4 @@ export const Hall = new mongoose.Schema({
     }
 })
 
-export const HallModel = mongoose.model(COLLECTIONS.HALLS, Hall)
+export const HallModel = mongoose.model(COLLECTIONS.HALLS,Hall)
