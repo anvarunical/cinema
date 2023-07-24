@@ -9,7 +9,7 @@ class HallService extends BaseService {
         isVip: 1
     }
     async getAll(options = {}){
-        return await this.findByQuery({}, {...options, ...this.project})
+        return await this.findByQuery({deletedAt : 0}, {...options, ...this.project})
     }   
 
     async getById(id, options = {}){

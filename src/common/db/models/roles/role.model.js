@@ -5,44 +5,120 @@ export const Role = new mongoose.Schema({
     name: mongoose.SchemaTypes.String,
 
     // admin
-    addAdmin: mongoose.SchemaTypes.Boolean,
-    updateAdmin: mongoose.SchemaTypes.Boolean,
-    deleteAdmin: mongoose.SchemaTypes.Boolean,
+    addAdmin: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    updateAdmin: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    deleteAdmin: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
 
     // genres
-    addGenre: mongoose.SchemaTypes.Boolean,
-    updateGenre: mongoose.SchemaTypes.Boolean,
-    deleteGenre: mongoose.SchemaTypes.Boolean,
+    addGenre: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    updateGenre: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    deleteGenre: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
 
     // hall
-    addHall: mongoose.SchemaTypes.Boolean,
-    updateHall: mongoose.SchemaTypes.Boolean,
-    deleteHall: mongoose.SchemaTypes.Boolean,
+    addHall: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    updateHall: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    deleteHall: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
 
     // movie
-    addMovie: mongoose.SchemaTypes.Boolean,
-    updateMovie: mongoose.SchemaTypes.Boolean,
-    deleteMovie: mongoose.SchemaTypes.Boolean,
+    addMovie: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    updateMovie: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    deleteMovie: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
 
     // role
-    addRole: mongoose.SchemaTypes.Boolean,
-    updateRole: mongoose.SchemaTypes.Boolean,
-    deleteRole: mongoose.SchemaTypes.Boolean,
+    addRole: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    updateRole: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    deleteRole: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
 
     // seans
-    addSeans: mongoose.SchemaTypes.Boolean,
-    updateSeans: mongoose.SchemaTypes.Boolean,
-    deleteSeans: mongoose.SchemaTypes.Boolean,
+    addSeans: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    updateSeans: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    deleteSeans: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
 
     // seat
-    addSeat: mongoose.SchemaTypes.Boolean,
-    updateSeat: mongoose.SchemaTypes.Boolean,
-    deleteSeat: mongoose.SchemaTypes.Boolean,
+    addSeat: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    updateSeat: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    deleteSeat: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
 
     // settings
-    addSettings: mongoose.SchemaTypes.Boolean,
-    updateSettings: mongoose.SchemaTypes.Boolean,
-    deleteSettings: mongoose.SchemaTypes.Boolean,
+    addSettings: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    updateSettings: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    deleteSettings: {
+        type : mongoose.SchemaTypes.Boolean,
+        default : false
+    },
+    deletedAt : {
+        type : mongoose.SchemaTypes.Mixed , 
+        default : 0
+    }
 })
 
 export const RoleModel = mongoose.model(COLLECTIONS.ROLES, Role)

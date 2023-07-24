@@ -23,16 +23,16 @@ export const hallSchemas = {
         number: Joi.number()
                    .min(1)
                    .max(50)
-                   .required(),
+                   ,
         raws:   Joi.number() 
                    .min(1)
                    .max(20)
-                   .required(),
+                   ,
         seats: Joi.number()            
                   .min(5)
                   .max(20)
-                  .required(),
+                  ,
         isVip: Joi.boolean()
-                  .required()
+                  
     }) 
 }
