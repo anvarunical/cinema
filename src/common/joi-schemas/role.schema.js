@@ -34,7 +34,7 @@ export const roleSchema = {
         deleteSettings: Joi.boolean(),
     }) ,
     updateRole : Joi.object({
-        id : Joi.string().hex().length(24).required(),
+        _id : Joi.string().hex().length(24).required(),
         addAdmin: Joi.boolean(),
         updateAdmin: Joi.boolean(),
         deleteAdmin: Joi.boolean(),

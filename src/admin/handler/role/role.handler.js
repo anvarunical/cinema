@@ -5,12 +5,10 @@ import {sendError} from "../../../common/utils/error-sender.utils.js"
 export const createRoleHandler = async (req , res) =>{
     try {
         const data = req.body
-        console.log(data);
-        const result = await roleService.create(data)
-        console.log(result);
+        // const result = await roleService.create(data)
         return res.json({
             message : "Ok"  ,
-            data : result
+            // data : result
         })
     } catch (error) {
         sendError(res , error)
@@ -31,9 +29,10 @@ export const getRoleHandler = async (req , res) => {
 
 export const updateRoleHandler = async (req , res) =>{
     try {
+        const {_id} = req.body
         const data = req.body
-        await roleService.findById(data.id)
-        const result = await roleService.updateOne(data.id , data)
+        await roleService.findById(_id)
+        const result = await roleService.updateOne(_id , data)
         return res.json({
             message : "Ok" , 
             data : result

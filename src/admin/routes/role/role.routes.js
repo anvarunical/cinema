@@ -4,10 +4,11 @@ import {authorization} from "../../../common/middleware/auth.js";
 import {roleSchema} from "../../../common/joi-schemas/role.schema.js";
 import {validateIt} from "../../../common/middleware/validate.js";
 import {baseSchemas} from "../../../common/joi-schemas/base.schemas.js";
+import {checkRole} from "../../../common/middleware/auth-role.js";
 const router = Router()
 
 router.route('/')
-    .post(authorization,validateIt(roleSchema.createRole,"body"),createRoleHandler)
+    .post(authorization,checkRole,validateIt(roleSchema.createRole,"body"),createRoleHandler)
     .get(authorization,getRoleHandler)
     .put(authorization,validateIt(roleSchema.updateRole,'body'),updateRoleHandler)
 
