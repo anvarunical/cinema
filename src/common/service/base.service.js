@@ -50,10 +50,10 @@ export const BaseService = class BaseService {
         }
     }
 
-    async findOne(query){
+    async findOne(query , options ={}){
         try {
             query.deletedAt = 0
-            return await this.model.findOne(query)
+            return await this.model.findOne(query , options)
         } catch (error) {
             console.log(error.message);
         }

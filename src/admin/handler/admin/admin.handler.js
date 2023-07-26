@@ -21,7 +21,6 @@ export async function createAdminHandler(request, response){
 
 export async function updateAdminHandler(request, response){
     try {
-        console.log(1);
         const data = request.body
         await adminService.updateOne(data._id, data)
         return response.json({
