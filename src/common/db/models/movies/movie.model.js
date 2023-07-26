@@ -12,7 +12,7 @@ export const Movie = new mongoose.Schema({
         type: mongoose.SchemaTypes.String
     },
     filmedAt: {
-        type: mongoose.SchemaTypes.Date
+        type: mongoose.SchemaTypes.Number
     },
     actors: {
         type: mongoose.SchemaTypes.Array

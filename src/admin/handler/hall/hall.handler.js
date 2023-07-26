@@ -5,8 +5,7 @@ import {sendError} from "../../../common/utils/error-sender.utils.js";
 export async function createHallHandler(request, response){
     try {
         const data = request.body
-        data.password = md5(data.password)
-        const result = await genreService.create(data)
+        const result = await hallService.create(data)
         return response.json({
             message: "OK",
             data: result
@@ -22,7 +21,7 @@ export async function createHallHandler(request, response){
 export async function updateHallHandler(request, response){
     try {
         const data = request.body
-        await genreService.updateOne(data._id, data)
+        await hallService.updateOne(data._id, data)
         return response.json({
             message: "OK",
         })
@@ -33,7 +32,7 @@ export async function updateHallHandler(request, response){
 
 export async function getHallsHandler(request, response){
     try {
-        const genres = await genreService.getAll()
+        const genres = await hallService.getAll()
         return response.json({
             message: "OK",
             data: genres
@@ -47,9 +46,10 @@ export async function getHallsHandler(request, response){
 export async function deleteHallHandler(request,response){
     try {
         const {_id} = request.params
-        await genreService.deleteOne(_id)
+       const result =  await hallService.deleteOne(_id)
         return response.json({
-            message: Hall
+            message: "Ok",
+            data : result
         })
     } catch (error) {
         sendError(response, error)

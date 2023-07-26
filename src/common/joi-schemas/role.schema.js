@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-export const roleSchema = {
+export const roleSchemas = {
     createRole: Joi.object({
         name: Joi.string()
                  .trim()

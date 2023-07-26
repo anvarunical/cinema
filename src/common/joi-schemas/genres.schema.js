@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-export const genresSchema = {
+export const genreSchemas = {
     createGenre : Joi.object({
         name:Joi.string()
                 .min(3)

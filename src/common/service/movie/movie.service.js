@@ -20,7 +20,9 @@ class MovieService extends BaseService {
     async getAll(options = {}){
         return await this.findByQuery({}, {...options, ...this.project})
     }   
-
+    async getById(id, options = {}){
+        return await this.findById(id, {...this.project, ...options})
+    }
     
 }
 

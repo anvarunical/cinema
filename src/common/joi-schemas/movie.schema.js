@@ -1,4 +1,4 @@
-import Joi, {required} from "joi";
+import Joi from "joi";
 
 export const movieSchemas = {
     createMovie : Joi.object({
@@ -14,7 +14,7 @@ export const movieSchemas = {
                      .min(3)
                      .max(30)
                      .required(),
-        filmedAt: Joi.date()
+        filmedAt: Joi.number()
                      .required(),
         actors: Joi.array()
                    .min(1)
@@ -49,42 +49,29 @@ export const movieSchemas = {
         name: Joi.string()
                  .trim()
                  .min(3)
-                 .max(30)
-                 .required(),
-        duration: Joi.string()
-                     .required(),
+                 .max(30),
+        duration: Joi.string(),
         director: Joi.string()
                      .trim()
                      .min(3)
-                     .max(30)
-                     .required(),
-        filmedAt: Joi.date()
-                     .required(),
+                     .max(30),
+        filmedAt: Joi.number(),
         actors: Joi.array()
                    .min(1)
-                   .max(3)
-                   .required(),
+                   .max(3),
         genres: Joi.array()
                    .min(1)
-                   .max(3)
-                   .required(),
+                   .max(3),
         country: Joi.array()
                     .min(1)
-                    .max(1)
-                    .required(),
-        trailerUrl:Joi.string()
-                      .required(),
-        posterUrl:Joi.string()
-                     .required(),
-        pg: Joi.number()
-               .required(),
+                    .max(1),
+        trailerUrl:Joi.string(),
+        posterUrl:Joi.string(),
+        pg: Joi.number(),
         price: Joi.number()
                   .min(50000)
-                  .max(100000)
-                  .required(),
-        dimension: Joi.string()
-                  .required(),
+                  .max(100000),
+        dimension: Joi.string(),
         isPremiere: Joi.boolean()
-                       .required()            
     })
 }

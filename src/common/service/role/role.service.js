@@ -1,10 +1,7 @@
-import {GenreModel} from "../../db/models/genres/genre.model.js";
+import {RoleModel} from "../../db/models/roles/role.model.js";
 import {BaseService} from "../base.service.js";
 
-class GenreService extends BaseService {
-    project = {
-        name: 1
-    }
+class RoleService extends BaseService {
     async getAll(options = {}){
         return await this.findByQuery({}, {...options, ...this.project})
     }   
@@ -14,4 +11,4 @@ class GenreService extends BaseService {
     
 }
 
-export default new GenreService(GenreModel)
+export default new RoleService(RoleModel)

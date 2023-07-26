@@ -1,11 +1,11 @@
 import md5 from "md5";
-import genreService from "../../../common/service/genre/genre.service.js";
+import roleService from "../../../common/service/role/role.service.js";
 import {sendError} from "../../../common/utils/error-sender.utils.js";
 
-export async function createGenreHandler(request, response){
+export async function createRoleHandler(request, response){
     try {
         const data = request.body
-        const result = await genreService.create(data)
+        const result = await roleService.create(data)
         return response.json({
             message: "OK",
             data: result
@@ -18,10 +18,10 @@ export async function createGenreHandler(request, response){
     }
 }
 
-export async function updateGenreHandler(request, response){
+export async function updateRoleHandler(request, response){
     try {
         const data = request.body
-        await genreService.updateOne(data._id, data)
+        await roleService.updateOne(data._id, data)
         return response.json({
             message: "OK",
         })
@@ -30,12 +30,12 @@ export async function updateGenreHandler(request, response){
     }
 }
 
-export async function getGenresHandler(request, response){
+export async function getRoleHandler(request, response){
     try {
-        const genres = await genreService.getAll()
+        const movies = await roleService.getAll()
         return response.json({
             message: "OK",
-            data: genres
+            data: movies
         })
     } catch (error) {
         sendError(response, error)
@@ -43,10 +43,10 @@ export async function getGenresHandler(request, response){
 }
 
 
-export async function deleteGenreHandler(request,response){
+export async function deleteRoleHandler(request,response){
     try {
         const {_id} = request.params
-        await genreService.deleteOne(_id)
+        await roleService.deleteOne(_id)
         return response.json({
             message: "OK",
         })
