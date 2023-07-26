@@ -1,4 +1,4 @@
-import Joi, {required} from "joi";
+import Joi from "joi";
 
 export const movieSchemas = {
     createMovie : Joi.object({
@@ -18,7 +18,7 @@ export const movieSchemas = {
                      .required(),
         actors: Joi.array()
                    .min(1)
-                   .max(3)
+                   .max(10)
                    .required(),
         genres: Joi.array()
                    .min(1)
@@ -26,7 +26,7 @@ export const movieSchemas = {
                    .required(),
         country: Joi.array()
                     .min(1)
-                    .max(1)
+                    .max(5)
                     .required(),
         trailerUrl:Joi.string()
                       .required(),
@@ -50,41 +50,40 @@ export const movieSchemas = {
                  .trim()
                  .min(3)
                  .max(30)
-                 .required(),
+,
         duration: Joi.string()
-                     .required(),
+    ,
         director: Joi.string()
                      .trim()
                      .min(3)
                      .max(30)
-                     .required(),
+    ,
         filmedAt: Joi.date()
-                     .required(),
+    ,
         actors: Joi.array()
                    .min(1)
                    .max(3)
-                   .required(),
+,
         genres: Joi.array()
                    .min(1)
                    .max(3)
-                   .required(),
+,
         country: Joi.array()
                     .min(1)
                     .max(1)
-                    .required(),
+,
         trailerUrl:Joi.string()
-                      .required(),
+    ,
         posterUrl:Joi.string()
-                     .required(),
-        pg: Joi.number()
-               .required(),
+    ,
+        pg: Joi.number(),
         price: Joi.number()
                   .min(50000)
                   .max(100000)
-                  .required(),
+,
         dimension: Joi.string()
-                  .required(),
+,
         isPremiere: Joi.boolean()
-                       .required()            
+            
     })
 }

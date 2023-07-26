@@ -42,7 +42,7 @@ export const Movie = new mongoose.Schema({
     isPremiere: {
         type: mongoose.SchemaTypes.Boolean
     },
-    createAt: {
+    createdAt: {
         type: mongoose.SchemaTypes.Mixed,
         default: 0
     },

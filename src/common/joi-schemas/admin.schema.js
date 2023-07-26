@@ -33,7 +33,7 @@ export const adminSchemas = {
                      .min(6)
                      .max(30)
                      .required(),
-        // roleId: ,
+        roleId: Joi.string().hex().length(24).required()
     }),
     updateAdmin: Joi.object({
         _id: Joi.string().hex().length(24).required(),
