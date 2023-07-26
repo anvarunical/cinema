@@ -1,3 +1,5 @@
+import {Types} from "mongoose";
+import {COLLECTIONS} from "../../constants/collections.js";
 import {MovieModel} from "../../db/models/movies/movie.model.js";
 import {BaseService} from "../base.service.js";
 
@@ -8,7 +10,6 @@ class MovieService extends BaseService {
         director: 1,
         filmedAt: 1,
         actors: 1,
-        genres: 1,
         country: 1,
         trailerUrl: 1,
         posterUrl: 1,
@@ -17,8 +18,46 @@ class MovieService extends BaseService {
         dimension: 1,
         isPremiere: 1
     }
-    async getAll(options = {}){
-        return await this.findByQuery({}, {...options, ...this.project})
+    async getAll(data = {}, options = {}){
+        const query = {}
+        if(data.genres){
+            data.genres = data.genres.map((el) => new Types.ObjectId(el))
+            query.genres = {
+                $in: data.genres
+            }
+        }
+        const $lookupGenres = {
+            $lookup: {
+                from: COLLECTIONS.GENRES,
+                localField: 'genres',
+                foreignField: '_id',
+                pipeline: [
+                   {
+                        $match: {
+                            deletedAt: 0
+                        }
+                   },
+                   {
+                        $project: {
+                            name: 1
+                        }
+                   }
+                ],
+                as: 'genre'
+            }
+        }
+
+        this.project.genre = 1
+
+        const $project = {
+            $project: this.project
+        }
+
+        const pipeline = [
+            $lookupGenres,
+            $project
+        ]
+        return await this.aggregate(query,pipeline, options)
     }   
 
     

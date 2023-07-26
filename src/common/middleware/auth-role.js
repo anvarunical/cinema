@@ -23,7 +23,6 @@ export async function checkRole(request, response, next){
         const url = request.originalUrl
         const method = request.method
         const permission = role[URL_ACCESS[method][url]]
-        
         if(!permission){
             throw CommonException.NotEnoughPermission('permission denied!')
         }

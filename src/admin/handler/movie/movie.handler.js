@@ -1,10 +1,12 @@
 import md5 from "md5";
 import movieService from "../../../common/service/movie/movie.service.js";
 import {sendError} from "../../../common/utils/error-sender.utils.js";
+import {Types} from "mongoose";
 
 export async function createMovieHandler(request, response){
     try {
         const data = request.body
+        data.genres = data.genres.map((el) => new Types.ObjectId(el))
         const result = await movieService.create(data)
         return response.json({
             message: "OK",
@@ -18,6 +20,9 @@ export async function createMovieHandler(request, response){
 export async function updateMovieHandler(request, response){
     try {
         const data = request.body
+        if(data.genres){
+            data.genres = data.genres.map((el) => new Types.ObjectId(el))
+        }
         await movieService.updateOne(data._id, data)
         return response.json({
             message: "OK",
@@ -29,7 +34,8 @@ export async function updateMovieHandler(request, response){
 
 export async function getMoviesHandler(request, response){
     try {
-        const movies = await movieService.getAll()
+        const data = request.body
+        const movies = await movieService.getAll(data)
         return response.json({
             message: "OK",
             data: movies

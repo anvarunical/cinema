@@ -1,4 +1,5 @@
 /node_modules
 plan.txt
 .env
+/uploads
 # package-lock.json

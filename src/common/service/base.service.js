@@ -1,5 +1,6 @@
 import md5 from "md5";
 import {Types, startSession} from "mongoose";
+import {CommonException} from "../exeptions/index.js";
 
 export const BaseService = class BaseService {
     constructor(model){
@@ -75,6 +76,24 @@ export const BaseService = class BaseService {
             return await this.model.find(query, options)
         } catch (error) {
             console.log(error.message);
+        }
+    }
+
+    async aggregate(query, pipeline, options = {}){
+        try {
+            const $match = {
+                $match: {
+                    ...query,
+                    deletedAt: 0
+                }
+            }
+
+
+            const mainPipeline = [$match, ...pipeline]
+            return await this.model.aggregate(mainPipeline,options)
+
+        } catch (error) {
+            throw CommonException.Unknown(error)
         }
     }
 }

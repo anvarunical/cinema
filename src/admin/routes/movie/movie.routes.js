@@ -10,8 +10,8 @@ const routes = express.Router()
 routes.route('/')
     .post(authorization, validateIt(movieSchemas.createMovie, 'body'),createMovieHandler)
     .put(authorization, validateIt(movieSchemas.updateMovie, 'body'), updateMovieHandler)
-    .get(authorization, getMoviesHandler)
 
 routes.delete('/:_id',authorization, validateIt(baseSchemas.byId, 'params'), deleteMovieHandler)
+routes.post('/all', authorization, getMoviesHandler)
 
 export default routes
