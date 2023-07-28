@@ -26,6 +26,36 @@ class MovieService extends BaseService {
                 $in: data.genres
             }
         }
+        if(data.filmedAt){
+            query.filmedAt = data.filmedAt
+        }
+        if(data.country){
+            query.country = {
+                $in: data.country
+            }
+        }
+        if(data.pgFrom){
+            query.pg.$gte = data.pgFrom
+        }
+        if(data.pgTo){
+            query.pg.$lte = data.pgTo
+        }
+        if(data.priceFrom){
+            query.price.$gte = data.priceFrom
+        }
+        if(data.priceTo){
+            query.pg.$lte = data.priceTo
+        }
+
+        if([true, false].includes(data.isPremiere)) query.isPremiere = data.isPremiere
+
+
+        if(data.search){
+            query.name = {
+                $regex: data.search,
+                $options: 'i'
+            }
+        }
         const $lookupGenres = {
             $lookup: {
                 from: COLLECTIONS.GENRES,
@@ -57,7 +87,7 @@ class MovieService extends BaseService {
             $lookupGenres,
             $project
         ]
-        return await this.aggregate(query,pipeline, options)
+        return await this.findPaging(query,data,pipeline, options)
     }   
 
     

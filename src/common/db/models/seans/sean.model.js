@@ -20,12 +20,6 @@ export const Seans = new mongoose.Schema({
         startHour: mongoose.SchemaTypes.String,
         endHour: mongoose.SchemaTypes.String,
     },
-    seats: {
-        type: mongoose.SchemaTypes.Number
-    },
-    isVip: {
-        type: mongoose.SchemaTypes.Boolean
-    },
     price: {
         type: mongoose.SchemaTypes.Number
     },

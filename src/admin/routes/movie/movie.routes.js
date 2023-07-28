@@ -12,6 +12,6 @@ routes.route('/')
     .put(authorization, validateIt(movieSchemas.updateMovie, 'body'), updateMovieHandler)
 
 routes.delete('/:_id',authorization, validateIt(baseSchemas.byId, 'params'), deleteMovieHandler)
-routes.post('/all', authorization, getMoviesHandler)
+routes.post('/all', validateIt(movieSchemas.findPagin, 'body'), authorization, getMoviesHandler)
 
 export default routes

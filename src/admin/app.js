@@ -10,6 +10,7 @@ import roleRoutes from "./routes/role/role.routes.js"
 import hallRoutes from "./routes/hall/hall.routes.js"
 import uploadRoutes from "./routes/upload/upload.routes.js"
 import movieRoutes from "./routes/movie/movie.routes.js"
+import {CommonException} from "../common/exeptions/index.js";
 
 const app = express()
 
@@ -27,12 +28,12 @@ async function start() {
 
     app.get('/',(request,response) => response.send("<h1>admin api!</h1>"))
 
-    // app.use((error, req, res, next) => {
-    //     if(error instanceof CommonExeption){
-    //         return res.status(error.status).send(error)
-    //     }
-    //     return res.status(500).send(new errors.ServerError(""))
-    // })
+    // errorHandler
+    app.use((error, request, response, next) => {
+        console.log(22, error)
+        if (error instanceof CommonException) response.send(error)
+        else response.send(CommonException.UnknownError(error))
+    })
     console.log(`admin server is running on http://${ENV.HOST}:${ENV.ADMIN_PORT}`)
 }
 

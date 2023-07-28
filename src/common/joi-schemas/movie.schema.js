@@ -14,7 +14,7 @@ export const movieSchemas = {
                      .min(3)
                      .max(30)
                      .required(),
-        filmedAt: Joi.date()
+        filmedAt: Joi.string()
                      .required(),
         actors: Joi.array()
                    .min(1)
@@ -49,41 +49,44 @@ export const movieSchemas = {
         name: Joi.string()
                  .trim()
                  .min(3)
-                 .max(30)
-,
-        duration: Joi.string()
-    ,
+                 .max(30),
+        duration: Joi.string(),
         director: Joi.string()
                      .trim()
                      .min(3)
-                     .max(30)
-    ,
-        filmedAt: Joi.date()
-    ,
+                     .max(30),
+        filmedAt: Joi.string(),
         actors: Joi.array()
                    .min(1)
-                   .max(3)
-,
+                   .max(3),
         genres: Joi.array()
                    .min(1)
-                   .max(3)
-,
+                   .max(3),
         country: Joi.array()
                     .min(1)
-                    .max(1)
-,
-        trailerUrl:Joi.string()
-    ,
-        posterUrl:Joi.string()
-    ,
+                    .max(1),
+        trailerUrl:Joi.string(),
+        posterUrl:Joi.string(),
         pg: Joi.number(),
         price: Joi.number()
                   .min(50000)
-                  .max(100000)
-,
-        dimension: Joi.string()
-,
+                  .max(100000),
+        dimension: Joi.string(),
         isPremiere: Joi.boolean()
-            
+    }),
+    findPagin: Joi.object({
+        limit: Joi.number().min(1),
+        page: Joi.number().min(1),
+        sortBy: Joi.string(),
+        asc: Joi.number(),
+        search: Joi.string(),
+        filmedAt: Joi.string(),
+        genres: Joi.array().min(1).max(3),
+        country: Joi.array().min(1).max(10),
+        pgFrom: Joi.number(),
+        pgTo: Joi.number(),
+        priceFrom: Joi.number().min(30000),
+        priceTo: Joi.number().min(1000000),
+        isPremiere: Joi.boolean()
     })
 }

@@ -96,4 +96,57 @@ export const BaseService = class BaseService {
             throw CommonException.Unknown(error)
         }
     }
+
+    async findPaging(query,data,additional_pipeline = [
+            {
+                $project: {
+                    __v: 0,
+                },
+            },
+        ],
+    ) {
+        try {
+            const {limit = 10, page = 1, sortBy, asc} = data;
+
+            const $match = {
+                $match: query,
+            };
+        
+            const $sort = {
+                $sort: {
+                    createdAt: -1,
+                },
+            };
+        
+            if (sortBy) {
+                $sort.$sort[`${sortBy}`] = asc > 0 ? 1 : -1;
+            }
+        
+            const $skip = {
+                $skip: limit * (page - 1),
+            };
+        
+            const $limit = {
+                $limit: limit,
+            };
+        
+            let pipeline = [$match, $sort, $skip, $limit];
+        
+            if (additional_pipeline.length > 0) {
+                pipeline = [...pipeline, ...additional_pipeline];
+            }
+        
+            console.log(123, JSON.stringify(pipeline, null, 4));
+        
+        
+            const result = await this.model
+                .aggregate(pipeline)
+                .exec();
+        
+            return result;
+        } catch (error) {
+            console.log(error)
+            throw error;
+        }
+    }
 }
