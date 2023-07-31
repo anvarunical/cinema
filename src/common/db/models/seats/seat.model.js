@@ -15,6 +15,18 @@ export const Seat = new mongoose.Schema({
     isOrdered: {
         type: mongoose.SchemaTypes.Boolean,
         default: false
+    },
+    createdAt: {
+        type: mongoose.SchemaTypes.Mixed,
+        default: 0
+    },
+    updatedAt: {
+        type: mongoose.SchemaTypes.Mixed,
+        default: 0
+    },
+    deletedAt: {
+        type: mongoose.SchemaTypes.Mixed,
+        default: 0
     }
 })
 

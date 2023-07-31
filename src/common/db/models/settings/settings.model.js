@@ -10,7 +10,20 @@ const TimePercentSchema = mongoose.Schema({
 export const Settings = new mongoose.Schema({
     vip: mongoose.SchemaTypes.Number,
     times: {
+        _id: false,
         type: [TimePercentSchema]
+    },
+    createdAt: {
+        type: mongoose.SchemaTypes.Mixed,
+        default: 0
+    },
+    updatedAt: {
+        type: mongoose.SchemaTypes.Mixed,
+        default: 0
+    },
+    deletedAt: {
+        type: mongoose.SchemaTypes.Mixed,
+        default: 0
     }
 })
 

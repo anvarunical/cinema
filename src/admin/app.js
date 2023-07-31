@@ -12,6 +12,7 @@ import uploadRoutes from "./routes/upload/upload.routes.js"
 import movieRoutes from "./routes/movie/movie.routes.js"
 import {CommonException} from "../common/exeptions/index.js";
 import settingsRoutes from "./routes/settings/settings.routes.js"
+import seatRoutes from './routes/seats/seats.routes.js'
 
 const app = express()
 
@@ -27,6 +28,7 @@ async function start() {
     app.use('/upload',uploadRoutes)
     app.use('/movie' , movieRoutes)
     app.use('/settings' , settingsRoutes)
+    app.use('/seats' , seatRoutes)
 
     app.get('/',(request,response) => response.send("<h1>admin api!</h1>"))
 
