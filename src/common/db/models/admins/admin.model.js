@@ -32,7 +32,7 @@ export const Admin = new mongoose.Schema({
     deletedAt: {
         type: mongoose.SchemaTypes.Mixed,
         default: 0
-    }
+    },
 })
 
 export const AdminModel = mongoose.model(COLLECTIONS.ADMINS, Admin)
