@@ -4,31 +4,49 @@ import {sendError} from "../utils/error-sender.utils.js"
 
 const URL_ACCESS = {
     POST: {
-        '/role': 'addRole',
-        '/hall': 'addHall'
+        "/admin" : "addAdmin",
+        "/genre" : "addGenre",
+        '/role' : "addRole",
+        '/hall' : "addHall",
+        '/upload' : "addFile",
+        '/movie' : "addMovie",
+        '/settings' : "addSettings"
+
     },
     PUT: {
-        '/role': 'updateRole'
+        "/admin" : "updateAdmin",
+        "/genre" : "updateGenre",
+        '/role' : "updateRole",
+        '/hall' : "updateHall",
+        '/movie' : "updateMovie",
+        '/settings' : "updateSettings"
     },
     DELETE: {
-        '/role/:_id': 'deleteRole'
+        "/admin" : "deleteAdmin",
+        "/genre" : "deleteGenre",
+        '/role' : "deleteRole",
+        '/hall' : "deleteHall",
+        '/movie' : "deleteMovie",
+        '/settings' : "deleteSettings"
+
     }
 }
 
-export async function checkRole(request, response, next){
+export async function checkRole(request,response,next) {
     try {
-        const {roleId, isBoss} = request.admin
-        if(!isBoss){
-        const role = await roleService.findById(roleId)
-        const url = request.originalUrl
-        const method = request.method
-        const permission = role[URL_ACCESS[method][url]]
-        if(!permission){
-            throw CommonException.NotEnoughPermission('permission denied!')
+        const {roleId,isBoss} = request.admin
+        if (!isBoss) {
+            const role = await roleService.findById(roleId)
+            const url = request.baseUrl
+            const method = request.method
+            const permission = role[URL_ACCESS[method][url]]
+            console.log(permission);
+            if (!permission) {
+                throw CommonException.NotEnoughPermission('permission denied!')
+            }
         }
-    }
         next()
     } catch (error) {
-        return sendError(response, error)
+        return sendError(response,error)
     }
 }

@@ -10,9 +10,9 @@ const router = Router()
 router.route('/')
     .post(authorization,checkRole,validateIt(roleSchema.createRole,"body"),createRoleHandler)
     .get(authorization,getRoleHandler)
-    .put(authorization,validateIt(roleSchema.updateRole,'body'),updateRoleHandler)
+    .put(authorization,checkRole ,validateIt(roleSchema.updateRole,'body'),updateRoleHandler)
 
-router.delete("/:_id" ,authorization , validateIt(baseSchemas.byId , 'params'), deleteRoleHandler)
+router.delete("/:_id" ,authorization ,checkRole , validateIt(baseSchemas.byId , 'params'), deleteRoleHandler)
 
 
 export default router
