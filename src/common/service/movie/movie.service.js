@@ -48,8 +48,6 @@ class MovieService extends BaseService {
         }
 
         if([true, false].includes(data.isPremiere)) query.isPremiere = data.isPremiere
-
-
         if(data.search){
             query.name = {
                 $regex: data.search,

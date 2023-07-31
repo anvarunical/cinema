@@ -11,6 +11,7 @@ import hallRoutes from "./routes/hall/hall.routes.js"
 import uploadRoutes from "./routes/upload/upload.routes.js"
 import movieRoutes from "./routes/movie/movie.routes.js"
 import {CommonException} from "../common/exeptions/index.js";
+import settingsRoutes from "./routes/settings/settings.routes.js"
 
 const app = express()
 
@@ -25,6 +26,7 @@ async function start() {
     app.use('/hall',hallRoutes)
     app.use('/upload',uploadRoutes)
     app.use('/movie' , movieRoutes)
+    app.use('/settings' , settingsRoutes)
 
     app.get('/',(request,response) => response.send("<h1>admin api!</h1>"))
 

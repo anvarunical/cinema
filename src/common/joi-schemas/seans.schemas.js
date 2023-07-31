@@ -12,25 +12,25 @@ export const SeansSchema = {
 }
 
 
-[
-    {
-        vip: 15,
-        times: [
-            {
-                fromHour: '10:00',
-                toHour: '15:00',
-                price: 10
-            },
-            {
-                fromHour: '15:00',
-                toHour: '19:00',
-                price: 15
-            },
-            {
-                fromHour: '19:00',
-                toHour: '23:59',
-                price: 25
-            }
-        ]
-    }
-]
+// [
+//     {
+//         vip: 15,
+//         times: [
+//             {
+//                 fromHour: '10:00',
+//                 toHour: '15:00',
+//                 price: 10
+//             },
+//             {
+//                 fromHour: '15:00',
+//                 toHour: '19:00',
+//                 price: 15
+//             },
+//             {
+//                 fromHour: '19:00',
+//                 toHour: '23:59',
+//                 price: 25
+//             }
+//         ]
+//     }
+// ]
