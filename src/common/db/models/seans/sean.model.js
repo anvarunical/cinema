@@ -38,3 +38,16 @@ export const Seans = new mongoose.Schema({
 })
 
 export const SeansModel = mongoose.model(COLLECTIONS.SEANS, Seans)
+
+
+/*
+    11:30 - 13:50
+    17:35 - 19:00
+    22:00 - 23:59
+*/
+
+/*
+    10:00 - 11:30
+    13:50 - 17:35
+    19:00 - 22:00
+*/
