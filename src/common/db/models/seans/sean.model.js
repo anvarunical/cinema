@@ -23,7 +23,7 @@ export const Seans = new mongoose.Schema({
     price: {
         type: mongoose.SchemaTypes.Number
     },
-    createAt: {
+    createdAt: {
         type: mongoose.SchemaTypes.Mixed,
         default: 0
     },

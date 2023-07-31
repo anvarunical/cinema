@@ -2,7 +2,7 @@ import Joi from "joi";
 const objects = Joi.object({
     fromHour: Joi.string().length(5).required(),
     toHour: Joi.string().length(5).required(),
-    price: Joi.number().min(0).max(30).required()
+    percent: Joi.number().min(0).max(30).required()
 })
 
 export const SettingsSchema = {
