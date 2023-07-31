@@ -36,3 +36,5 @@ export const Admin = new mongoose.Schema({
 })
 
 export const AdminModel = mongoose.model(COLLECTIONS.ADMINS, Admin)
+
+//create
