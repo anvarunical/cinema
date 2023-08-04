@@ -19,6 +19,7 @@ export const BaseService = class BaseService {
             id = new Types.ObjectId(id)
             data.updatedAt = new Date()
             return await this.model.updateOne({_id: id},{$set: data}, options)
+
         } catch (error) {
             console.log(error.message);
         }
@@ -44,7 +45,7 @@ export const BaseService = class BaseService {
 
     async deleteMany(query){
         try {
-            data.deletedAt = new Date()
+            query.deletedAt = 0
             return await this.model.updateMany(query, {$set: {deletedAt: new Date()}})
         } catch (error) {
             console.log(error.message)
@@ -61,7 +62,6 @@ export const BaseService = class BaseService {
     }
 
     async findById(id, options = {}){
-        console.log(id, options);
         id = new Types.ObjectId(id)
         const doc = await this.model.findById(id, options)
         if(!doc || doc.deletedAt) throw new Error('document not found')

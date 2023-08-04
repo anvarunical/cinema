@@ -8,12 +8,12 @@ export const SeansSchema = {
         shift: Joi.object({
             startHour: Joi.string().required(),
             endHour: Joi.string().required(),
-        })
+        }).required()
     }) ,
     getFreeSeansShift : Joi.object({
         hallId : Joi.string().length(24).hex().required(),
         movieId : Joi.string().length(24).hex().required(),
-        date : Joi.string().length(10).required()
+        date : Joi.date().greater('now').required()
 
     })
 }

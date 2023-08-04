@@ -8,7 +8,10 @@ const TimePercentSchema = mongoose.Schema({
   });
 
 export const Settings = new mongoose.Schema({
-    vip: mongoose.SchemaTypes.Number,
+    vip: {
+        type: mongoose.SchemaTypes.Number,
+        default: 0
+    },
     times: {
         _id: false,
         type: [TimePercentSchema]

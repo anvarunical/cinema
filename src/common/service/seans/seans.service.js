@@ -1,48 +1,76 @@
 import {Types} from "mongoose"
 import {BaseService} from "../base.service.js"
 import {SeansModel} from "../../db/models/seans/sean.model.js";
+import moment from "moment/moment.js";
 import movieService from "../movie/movie.service.js";
-
 class SeanService extends BaseService {
     async getFreeSeanTimes(date, movieId, hallId){
-        const seanss = await this.model.find({date : new Date(date) , hallId : new Types.ObjectId(hallId) , deletedAt: 0}).sort({"shift.startHour":1})
-        if(!seanss.length) return [{start:"10:00"  , end : "23:59"}]
-        const busyTimes  = []
-        seanss.forEach(el => busyTimes.push(el.shift))
-        // console.log(busyTimes);
-        // console.log(busyTimes);
-        const freeTimes = [] 
-
-        let digit = 0
-        const movie = await movieService.findById(movieId)
-        digit = Math.floor(parseInt(movie.duration)/60)*100+parseInt(movie.duration)%60
-
-        for(let i = 0 ; i< busyTimes.length - 1 ; i++){
-            if(busyTimes[i].endHour != busyTimes[i+1].startHour) freeTimes.push({start : busyTimes[i].endHour , 
-                end : busyTimes[i+1].startHour})
+        const dayStart = moment(date).startOf('day').toDate()
+        const dayEnd = moment(date).endOf('day').toDate()
+        const query = {
+            date: {
+                $lte: dayEnd,
+                $gte: dayStart
+            },
+            hallId: new Types.ObjectId(hallId)
         }
 
-        if(busyTimes[0].startHour!="10:00")
-            freeTimes.unshift({start:"10:00" , end:busyTimes[0].startHour})
+        let existingSeans = await this.findByQuery(query)
+        existingSeans = existingSeans.map((el) => el.shift)
+        const movie = await movieService.findById(movieId)
+        const duration = parseInt(movie.duration)
+        const freeSeansTimes = this.#findAvailableTimeSlots(duration,existingSeans)
+        return freeSeansTimes
+    }
 
-        if(busyTimes[busyTimes.length-1].endHour != "23:59")
-            freeTimes.push({start :busyTimes[busyTimes.length-1].endHour  , end : "23:59"})
-        // console.log(freeTimes);
-        const result = []
+    #findAvailableTimeSlots(movieDuration, existingSeans){
+        const openingTime = this.#convertTimeToMinutes('10:00');
+        const closingTime = this.#convertTimeToMinutes('23:59');
+
+        const movieDurationInMinutes = movieDuration;
+    
+        existingSeans.sort((a, b) => this.#convertTimeToMinutes(a.startHour) - this.#convertTimeToMinutes(b.startHour));
+    
+        let availableTimeSlots = [];
+        let nextStartTime = openingTime;
+    
+        for (const seans of existingSeans) {
+            const seansStart = this.#convertTimeToMinutes(seans.startHour);
+            const seansEnd = this.#convertTimeToMinutes(seans.endHour);
         
-        for(let i = 0 ; i< freeTimes.length ; i++){
-            let a = parseInt(freeTimes[i].start.slice(0 , 2))*100 + parseInt(freeTimes[i].start.slice(3 , 5))
-            let b = parseInt(freeTimes[i].end.slice(0 , 2))*100 + parseInt(freeTimes[i].end.slice(3 , 5))
-            if(b-a>digit){
-                let number = b-digit
-                if(number%100>60){
-                    number = (parseInt(number/100)+1)*100+number%100%60
+            if (nextStartTime + movieDurationInMinutes <= seansStart) {
+                while (nextStartTime + movieDurationInMinutes <= seansStart) {
+                    const startTime = this.#convertMinutesToTime(nextStartTime);
+                    const endTime = this.#convertMinutesToTime(nextStartTime + movieDurationInMinutes);
+                    availableTimeSlots.push({ startHour: startTime, endHour: endTime });
+                    nextStartTime += 15;
                 }
-                result.push({start : freeTimes[i].start , end : (parseInt(number/100)+'').padStart(2 , '0')+":"+(parseInt(number%100)+'').padStart(2 , '0')} )
+            }
+        
+            nextStartTime = seansEnd;
+        }
+    
+        if (nextStartTime + movieDurationInMinutes <= closingTime) {
+            while (nextStartTime + movieDurationInMinutes <= closingTime) {
+                const startTime = this.#convertMinutesToTime(nextStartTime);
+                const endTime = this.#convertMinutesToTime(nextStartTime + movieDurationInMinutes);
+                availableTimeSlots.push({ startHour: startTime, endHour: endTime });
+                nextStartTime += 15;
             }
         }
-        return result
-        // console.log(parseInt(movie.duration));
+    
+        return availableTimeSlots;
+    }
+
+    #convertTimeToMinutes(timeString) {
+        const [hours, minutes] = timeString.split(':').map(Number);
+        return hours * 60 + minutes;
+    }
+
+    #convertMinutesToTime(minutes) {
+        const hours = Math.floor(minutes / 60);
+        const mins = minutes % 60;
+        return `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}`;
     }
 }
 
