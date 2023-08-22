@@ -10,7 +10,7 @@ export const ENV = {
     HOST: env.HOST || 'localhost',
     ADMIN_PORT: env.ADMIN_PORT || 8000,
     CLIENT_PORT: env.CLIENT_PORT || 9000,
-    DB_URL: env.DB_URL || 'mongodb://localhost:2717,localhost:2727,localhost:2737/CINEMA',
+    DB_URL: env.DB_URL || 'mongodb://localhost:27017/CINEMA',
     TOKEN_SECRET_KEY: env.TOKEN_SECRET_KEY || "SECRET_KEY",
     BOT_TOKEN: env.BOT_TOKEN || '6359454176:AAH5vOG31gZTOplQWqbK9GnwnMiA9pOjSy0',
     OTP_CHANNEL: env.OTP_CHANNEL || -1001859198912,
